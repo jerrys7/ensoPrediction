@@ -1,0 +1,42 @@
+> library(ncdf4)
+Warning message:
+程辑包‘ncdf4’是用R版本3.5.3 来建造的 
+> fn <- "C:/Users/congs/Downloads/air.2m.mon.mean.nc"
+> nc <- nc_open(fn)
+> head(nc)
+$filename
+[1] "C:/Users/congs/Downloads/air.2m.mon.mean.nc"
+
+$writable
+[1] FALSE
+
+$id
+[1] 65536
+
+$safemode
+[1] FALSE
+
+$format
+[1] "NC_FORMAT_NETCDF4_CLASSIC"
+
+$is_GMT
+[1] FALSE
+
+> attributes(nc$var)
+$names
+[1] "air"
+
+> rm(list=ls())
+> library(raster)
+Warning: namespace ‘rgdal’ is not available and has been replaced
+by .GlobalEnv when processing object ‘i’
+Warning messages:
+1: 程辑包‘raster’是用R版本3.5.3 来建造的 
+2: 程辑包‘sp’是用R版本3.5.3 来建造的 
+> nc.brick <-brick(file.choose()) (choosing files)
+> dim(nc.brick)
+[1]  94 192 866
+> nc.df <- as.data.frame(nc.brick)
+> head(nc.df)
+> write.csv(nc.df, file.choose()) (choose existing csv) 
+> q()
