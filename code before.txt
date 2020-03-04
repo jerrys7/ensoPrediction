@@ -1,0 +1,22 @@
+> library(ncdf4)
+> fn <- "C:/Users/congs/Downloads/air.2m.mon.mean.nc"
+> nc <- nc_open(fn)
+> print(nc)
+
+this prints the overview
+
+> attributes(nc$var)
+$names
+[1] "air"
+
+> rm(list=ls())
+> install.packages("raster")
+> library(raster)
+> nc.brick <-brick(file.choose())
+> dim(nc.brick)
+[1]  94 192 866
+> nc.df <- as.data.frame(nc.brick)
+> nc.df <- as.data.frame(nc.brick[[1]], xy=T)
+> head(nc.df)
+write.csv(nc.df, i)
+
