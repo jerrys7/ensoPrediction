@@ -18,5 +18,5 @@ $names
 > nc.df <- as.data.frame(nc.brick)
 > nc.df <- as.data.frame(nc.brick[[1]], xy=T)
 > head(nc.df)
-write.csv(nc.df, i)
+write.csv(nc.df, file.choose())
 
