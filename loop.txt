@@ -1,0 +1,12 @@
+rm(list = ls())
+install.packages(“raster”)
+install.packages(“ncdf4”)
+library(raster)
+ptf <- "/path/to/nc/files"
+setwd(ptf) # change your working directory
+lf <- list.files(pattern="[.]nc$") # list of files ending in .nc
+for(i in lf){
+  nc.brick <- brick(i)
+  nc.df <- as.data.frame(nc.brick[[1]], xy=T)
+  write.csv(nc.df, sub("[.]nc$",".csv",i)) # write to the same file name substituting .nc to .csv
+}
